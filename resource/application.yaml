@@ -1,0 +1,34 @@
+server:
+  port: 5000
+
+service:
+  telegram:
+    vip-group-id: -1001856345480
+    private-group-id: -1002043576596
+    test-group-id: -1002205997540
+    base-url: "https://api.telegram.org/"
+    prod:
+      vip-group-id: -1001856345480
+  bit-get:
+    baseUrl: "https://api.bitget.com"
+    endpoint:
+      customer-list: "/api/broker/v1/agent/customerList"
+      customer-deposit-list: "/api/broker/v1/agent/customerDepositList"
+      customer-trade-volumn: "/api/broker/v1/agent/customerTradeVolumnList"
+      customer-assets-list: "/api/broker/v1/agent/customerAccountAssetsList"
+      server-time: "/api/v2/public/time"
+  database:
+    host: localhost
+    port: 5432
+    dbname: postgres
+    url: postgres://${service.database.dbname}:${service.database.password}@${service.database.username}:${service.database.port}/${service.database.dbname}
+    username: postgres
+    password: pass
+    prod:
+      host: dpg-cpvi0vpu0jms73at8ps0-a
+      port: 5432
+      dbname: erp4btc
+      url: postgresql://user:qpVTacISnsvdOYGHAMKJ3WSzPV2QgG3T@dpg-cpvi0vpu0jms73at8ps0-a/erp4btc
+      username: user
+      password: qpVTacISnsvdOYGHAMKJ3WSzPV2QgG3T
+#    url: postgresql://user:qpVTacISnsvdOYGHAMKJ3WSzPV2QgG3T@dpg-cpvi0vpu0jms73at8ps0-a/erp4btc
