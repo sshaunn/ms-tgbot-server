@@ -13,12 +13,12 @@ from src.telegram_service import check_customer_uid_command, start_customer_uid_
 
 # application = bot_app()
 
-application = Application.builder().token(c.TOKEN).build()
-application.add_handler(conversation_handler(check, check_customer_uid_command, cancel, UID, 'check'))
-application.add_handler(conversation_handler(check, start_customer_uid_command, cancel, UID, 'start'))
-application.add_handler(conversation_handler(check, kick_group_member, cancel, UID, 'kick'))
-application.add_handler(conversation_handler(check, reinvite_customer, cancel, UID, 'rejoin'))
-application.add_handler(ChatMemberHandler(check_customer_membership, ChatMemberHandler.CHAT_MEMBER))
+app = Application.builder().token(c.TOKEN).build()
+app.add_handler(conversation_handler(check, check_customer_uid_command, cancel, UID, 'check'))
+app.add_handler(conversation_handler(check, start_customer_uid_command, cancel, UID, 'start'))
+app.add_handler(conversation_handler(check, kick_group_member, cancel, UID, 'kick'))
+app.add_handler(conversation_handler(check, reinvite_customer, cancel, UID, 'rejoin'))
+app.add_handler(ChatMemberHandler(check_customer_membership, ChatMemberHandler.CHAT_MEMBER))
 
 
 # @app.route('/webhook', methods=['POST'])
@@ -30,7 +30,7 @@ application.add_handler(ChatMemberHandler(check_customer_membership, ChatMemberH
 
 
 if __name__ == '__main__':
-    application.run_webhook(
+    app.run_webhook(
         listen="0.0.0.0",
         port=5000,
         url_path=c.TOKEN,
