@@ -41,7 +41,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     await update.message.reply_text("Help!")
 
 
-def bot_app():
+async def bot_app():
     """Start the bot."""
     application = Application.builder().token(c.TOKEN).build()
     application.add_handler(conversation_handler(check, check_customer_uid_command, cancel, UID, 'check'))
@@ -61,6 +61,6 @@ def bot_app():
     # return application
     # application.start()
     # Run the bot until the user presses Ctrl-C
-    return application
+
     # application.run_polling(allowed_updates=Update.ALL_TYPES)
     # return application
