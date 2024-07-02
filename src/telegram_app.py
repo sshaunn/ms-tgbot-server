@@ -61,6 +61,5 @@ def bot_app():
     # return application
     # application.start()
     # Run the bot until the user presses Ctrl-C
-
     application.run_polling(allowed_updates=Update.ALL_TYPES)
     # return application
