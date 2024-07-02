@@ -41,7 +41,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     await update.message.reply_text("Help!")
 
 
-async def bot_app():
+def bot_app():
     """Start the bot."""
     application = Application.builder().token(c.TOKEN).build()
     application.add_handler(conversation_handler(check, check_customer_uid_command, cancel, UID, 'check'))
@@ -49,7 +49,7 @@ async def bot_app():
     application.add_handler(conversation_handler(check, kick_group_member, cancel, UID, 'kick'))
     application.add_handler(conversation_handler(check, reinvite_customer, cancel, UID, 'rejoin'))
     application.add_handler(ChatMemberHandler(check_customer_membership, ChatMemberHandler.CHAT_MEMBER))
-    # application.job_queue.run_repeating(send_heartbeat, interval=1800, first=1800)
+    application.job_queue.run_repeating(send_heartbeat, interval=1800, first=1800)
     # check_conversation_handler()
     #
     # # on different commands - answer in Telegram
@@ -62,5 +62,5 @@ async def bot_app():
     # application.start()
     # Run the bot until the user presses Ctrl-C
 
-    # application.run_polling(allowed_updates=Update.ALL_TYPES)
+    application.run_polling(allowed_updates=Update.ALL_TYPES)
     # return application
